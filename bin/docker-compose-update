@@ -1,9 +1,9 @@
 #!/bin/bash
 
-docker-compose pull | grep "Status: Downloaded newer image"
+docker-compose $* pull | grep "Status: Downloaded newer image"
 if [ $? -eq 0 ]; then
   echo Downloaded newer image
-  docker-compose down && docker-compose up -d
+  docker-compose $* down && docker-compose $* up -d
 else
-  echo Image is up to date
+  echo Nothing to do
 fi
